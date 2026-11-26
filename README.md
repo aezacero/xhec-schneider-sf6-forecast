@@ -48,10 +48,8 @@ uv run pytest                                    # tests on synthetic data
 SCHNEIDER_DEMO=1 uv run streamlit run app/main.py
 ```
 
-You need [uv](https://docs.astral.sh/uv/getting-started/installation/). The app opens at
-http://localhost:8501 with a "Demo data" badge. Pick a product, validity, list price, margin and
-cost scenario to get the quote price, risk buffer, margin at risk, safe validity and indexation
-trigger, plus a copper and steel "what if" and the 2021 replay.
+You need [uv](https://docs.astral.sh/uv/getting-started/installation/). The last command opens
+the decision tool on generated demo data (see [Decision tool](#decision-tool)).
 
 ## Rebuild the forecast CSV (with the data)
 Put the challenge data in `data/raw/` (layout below), then:
@@ -64,7 +62,6 @@ uv run python -m schneider_forecast.run_all     # data → forecasts → pricing
 This writes `outputs/forecasts/team_05_forecast_202609.csv` in about 40–50 seconds on a laptop
 CPU, plus the backtests (`outputs/backtest/`) and pricing tables (`data/processed/`). The steps can
 also be run one by one: `data`, `p2_selection`, `p3_selection`, `pricing`, `procurement`, `submit`.
-Running the app without `SCHNEIDER_DEMO` then uses the real outputs.
 
 ```
 data/raw/                       read-only
@@ -72,6 +69,26 @@ data/raw/                       read-only
 ├── supplier_balance_sheets/    contents of Supplier_balancesheet.zip
 └── *.xlsx, *.pdf               the other files
 ```
+
+## Decision tool
+A Streamlit app that turns the forecasts into a quote, for pricers who don't code.
+
+```bash
+SCHNEIDER_DEMO=1 uv run streamlit run app/main.py   # generated demo data, no confidential files needed
+uv run streamlit run app/main.py                    # real outputs, after the rebuild above
+```
+
+It opens at http://localhost:8501. Without the rebuilt outputs (or with `SCHNEIDER_DEMO=1`) it
+runs on generated demo data and shows a "Demo data" badge. It only reads `data/processed/` and
+`outputs/` on your machine; nothing is sent anywhere.
+
+| Page | Question it answers |
+|---|---|
+| Guide | How to read the tool in two minutes |
+| Quote | What price should go on this quote? Pick a product, validity, list price, margin and cost scenario to get the quote price, risk buffer, margin at risk, safe validity and indexation trigger, plus a copper and steel "what if" and the 2021 replay |
+| Cost outlook | How much could material cost move by June 2027, and which material carries the risk? |
+| Materials | The forecast and track record (skill, coverage) of each of the 19 series |
+| SF6-free | The AirSeT minus RM6 cost gap today and its range to June 2027 |
 
 ## Forecast CSV
 One row per target × horizon: 19 materials and 2 product cost indices × 3 horizons = 63 rows.
