@@ -12,3 +12,10 @@ def test_steps_run_in_dependency_order():
 def test_every_step_has_a_main():
     for step in run_all.STEPS:
         assert callable(importlib.import_module(f"schneider_forecast.{step}").main)
+
+
+def test_missing_raw_files_are_listed(tmp_path):
+    present = tmp_path / "here.csv"
+    present.write_text("x")
+    absent = tmp_path / "gone.csv"
+    assert run_all.missing_raw_files((present, absent)) == [absent]
