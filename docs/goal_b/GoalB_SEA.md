@@ -91,8 +91,8 @@ counts in their own Scope 1 emissions (`Jessie_GoalB_research.md` §10).
 
 | Network | Distribution voltages | Which AirSeT fits | Source |
 |---|---|---|---|
-| Malaysia (TNB) | Mainly 11 kV and 33 kV (22 kV and 6.6 kV in parts of Johor and Perak) | 11 / 22 / 6.6 kV: SM or RM AirSeT (up to 24 kV) ✅. 33 kV: needs GM AirSeT (up to 36 kV); whether it is sold in Malaysia is to confirm | [TNB](https://www.tnb.com.my/sustainability/esg-stories-cleaner-grid-low-emission-switchgear), [TNB supply handbook](https://www.tnb.com.my/esah/supply-application/), [Schneider BE](https://www.se.com/be/en/product-range/21830291-sm-airset), [Schneider MY](https://www.se.com/my/en/product-range/21830291-sm-airset/) |
-| Singapore (SP PowerGrid) | 6.6 kV and 22 kV | SM or RM AirSeT (up to 24 kV) ✅ | [SP Group rate schedule](https://www.spgroup.com.sg/dam/jcr:ed6d35eb-7bb5-450c-8386-b61f0cc13142/Transmission%20Service%20Rate%20Schedule%20(effective%20from%201%20Jul%202026).pdf) |
+| Malaysia (TNB) | Mainly 11 kV and 33 kV (22 kV and 6.6 kV in parts of Johor and Perak) | 11 / 22 / 6.6 kV: SM or RM AirSeT (up to 24 kV) fits. 33 kV: needs GM AirSeT (up to 36 kV); whether it is sold in Malaysia is to confirm | [TNB](https://www.tnb.com.my/sustainability/esg-stories-cleaner-grid-low-emission-switchgear), [TNB supply handbook](https://www.tnb.com.my/esah/supply-application/), [Schneider BE](https://www.se.com/be/en/product-range/21830291-sm-airset), [Schneider MY](https://www.se.com/my/en/product-range/21830291-sm-airset/) |
+| Singapore (SP PowerGrid) | 6.6 kV and 22 kV | SM or RM AirSeT (up to 24 kV) fits | [SP Group rate schedule](https://www.spgroup.com.sg/dam/jcr:ed6d35eb-7bb5-450c-8386-b61f0cc13142/Transmission%20Service%20Rate%20Schedule%20(effective%20from%201%20Jul%202026).pdf) |
 
 **Message for customers in the corridor:** *"Your approvals, your 2030 targets and the coming rules
 all point the same way. AirSeT removes SF6 from your site for the next 40 years, at a raw-material
