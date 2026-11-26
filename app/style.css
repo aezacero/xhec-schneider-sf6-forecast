@@ -1,0 +1,148 @@
+/* Canvas, adapted to Streamlit: white surface, black ink, hairlines, no shadows. */
+
+:root {
+  --surface: #ffffff;
+  --surface-raised: #f5f5f5;
+  --ink: #000000;
+  --ink-muted: #6b6b6b;
+  --hairline: #e6e6e6;
+  --field-mint: #d6ecc4;
+  --field-forest: #3f6b4f;
+  --focus: #0d99ff;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body, .stApp, .stApp p, .stApp label, .stApp input, .stApp button, .stApp div {
+  font-family: var(--sans);
+}
+
+.stApp { background: var(--surface); color: var(--ink); }
+
+/* hide Streamlit's menu, footer, deploy button and top decoration */
+#MainMenu, footer, [data-testid="stToolbarActions"], [data-testid="stMainMenu"],
+[data-testid="stAppDeployButton"],
+[data-testid="stDecoration"], [data-testid="stStatusWidget"] { display: none !important; }
+
+.block-container { max-width: 1120px; padding-top: 5.5rem; padding-bottom: 7.5rem; }
+
+/* no shadows anywhere */
+.stApp * { box-shadow: none !important; }
+
+/* focus blue: the only functional accent */
+.stApp *:focus-visible { outline: 2px solid var(--focus) !important; outline-offset: 2px; }
+
+/* ---- headings: short black line + grey explainer ---- */
+.cv-title { font-size: 44px; line-height: 1.05; font-weight: 400; letter-spacing: -0.03em;
+  margin: 0 0 8px; }
+.cv-title span, .cv-heading span { color: var(--ink-muted); }
+.cv-heading { font-size: 24px; line-height: 1.25; font-weight: 500; letter-spacing: -0.01em;
+  margin: 72px 0 4px; }
+.cv-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.cv-badge { font-size: 12px; color: var(--ink-muted); border: 1px solid var(--hairline);
+  border-radius: 9999px; padding: 4px 10px; white-space: nowrap; margin-top: 12px; }
+
+/* ---- the one colour field behind the main result ---- */
+.cv-field { background: var(--field-mint); border-radius: 16px; padding: 40px 48px;
+  margin: 24px 0 8px; }
+.cv-field .cv-label { font-size: 14px; font-weight: 500; }
+.cv-stat { font-size: 64px; line-height: 1; font-weight: 500; letter-spacing: -0.03em;
+  margin: 12px 0 10px; font-variant-numeric: tabular-nums; }
+.cv-field .cv-note { font-size: 16px; color: #2f3a2a; }
+
+/* ---- stat rows ---- */
+.cv-stats { display: grid; grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
+  border-top: 1px solid var(--hairline); margin-top: 24px; }
+.cv-cell { padding: 20px 20px 4px 0; }
+.cv-cell + .cv-cell { padding-left: 20px; border-left: 1px solid var(--hairline); }
+.cv-cell .cv-label { font-size: 14px; font-weight: 500; }
+.cv-value { font-size: 28px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em;
+  margin: 8px 0 6px; font-variant-numeric: tabular-nums; }
+.cv-value small { font-size: 14px; font-weight: 400; color: var(--ink-muted); margin-left: 4px; }
+.cv-hint { font-size: 12px; line-height: 1.4; color: var(--ink-muted); }
+
+/* plain one-line notes */
+.cv-note-line { font-size: 14px; color: var(--ink); border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline); padding: 12px 0; margin: 16px 0; }
+.cv-note-line span { color: var(--ink-muted); }
+.cv-caption { font-size: 12px; color: var(--ink-muted); margin-top: 4px; }
+
+/* ---- widgets ---- */
+.stApp label p { font-size: 14px !important; font-weight: 500; }
+[data-testid="stWidgetLabel"] { margin-bottom: 2px; }
+[data-testid="stCaptionContainer"] p { color: var(--ink-muted); font-size: 12px; }
+
+.stButton button, .stDownloadButton button {
+  border-radius: 8px; border: 1px solid var(--hairline); background: var(--surface);
+  color: var(--ink); font-weight: 500; padding: 8px 16px;
+}
+.stButton button:hover, .stDownloadButton button:hover { border-color: var(--ink); color: var(--ink); }
+.stButton button[kind="primary"], .stDownloadButton button[kind="primary"] {
+  background: var(--ink); color: #ffffff; border-color: var(--ink);
+}
+
+/* segmented controls: selected = black fill */
+[data-testid="stButtonGroup"] button { border-color: var(--hairline); }
+[data-testid="stButtonGroup"] button[aria-checked="true"] { background: var(--ink) !important;
+  color: #ffffff !important; border-color: var(--ink) !important; }
+[data-testid="stButtonGroup"] button[aria-checked="true"] * { color: #ffffff !important; }
+
+[data-testid="stExpander"] details { border: 1px solid var(--hairline); border-radius: 8px; }
+[data-testid="stExpander"] summary p { font-size: 14px; font-weight: 500; }
+
+/* top navigation */
+[data-testid="stHeader"] { background: var(--surface); border-bottom: 1px solid var(--hairline); }
+[data-testid="stTopNav"] a, [data-testid="stTopNav"] a * { color: var(--ink-muted) !important;
+  font-size: 14px; font-weight: 500; }
+[data-testid="stTopNav"] a[aria-current="page"], [data-testid="stTopNav"] a[aria-current="page"] * {
+  color: var(--ink) !important; }
+
+@media (max-width: 760px) {
+  .cv-title { font-size: 32px; }
+  .cv-stat { font-size: 48px; }
+  .cv-field { padding: 28px 24px; }
+  .cv-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cv-cell, .cv-cell + .cv-cell { padding: 16px 12px 4px 0; border-left: none; }
+}
+
+/* client logo: right end of the menu bar (fixed, like the header itself) */
+[data-testid="stHeaderLogo"] { position: fixed; top: 10px; right: 24px; z-index: 1000020;
+  height: 40px !important; max-height: 40px !important; width: auto !important;
+  max-width: none !important; }
+@media (max-width: 760px) {
+  [data-testid="stHeaderLogo"] { top: 14px; right: 16px; height: 30px !important;
+    max-height: 30px !important; }
+}
+
+/* ---- guide page ---- */
+.cv-steps { margin: 8px 0 0; padding-left: 1.4em; font-size: 16px; line-height: 1.6; }
+.cv-steps li { padding: 4px 0; }
+.cv-steps li::marker { font-weight: 500; }
+/* cards in a row share one height; the link sits at the bottom */
+[data-testid="stHorizontalBlock"]:has(.cv-card) { align-items: stretch; }
+[data-testid="stColumn"]:has(.cv-card) { display: flex; flex-direction: column; }
+[data-testid="stColumn"]:has(.cv-card) > [data-testid="stVerticalBlock"],
+[data-testid="stColumn"]:has(.cv-card) [data-testid="stLayoutWrapper"],
+[data-testid="stColumn"]:has(.cv-card) [data-testid="stLayoutWrapper"] > [data-testid="stVerticalBlock"] {
+  flex: 1 1 auto; }
+[data-testid="stLayoutWrapper"] > [data-testid="stVerticalBlock"]:has(.cv-card) {
+  border: 1px solid var(--hairline) !important; border-radius: 8px !important; padding: 20px 24px; }
+[data-testid="stLayoutWrapper"] > [data-testid="stVerticalBlock"]:has(.cv-card)
+  > [data-testid="stElementContainer"]:has([data-testid="stPageLink"]) { margin-top: auto; }
+.cv-card-title { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+.cv-card-question { font-size: 16px; color: var(--ink-muted); margin: 2px 0 12px; }
+.cv-card .cv-label { font-size: 12px; font-weight: 500; margin-top: 8px; }
+.cv-card .cv-hint { font-size: 14px; }
+[data-testid="stPageLink"] a p { font-size: 14px; font-weight: 500; color: var(--ink) !important; }
+.cv-terms { display: grid; grid-template-columns: 160px minmax(0, 1fr) minmax(0, 1fr);
+  font-size: 14px; line-height: 1.45; border-top: 1px solid var(--hairline); }
+.cv-terms-two { grid-template-columns: 160px minmax(0, 1fr); }
+.cv-terms > div { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--hairline); }
+.cv-terms .cv-hint { font-size: 14px; }
+.cv-term { font-weight: 500; }
+.cv-link { font-size: 14px; font-weight: 500; color: var(--ink); display: inline-block;
+  margin-top: 12px; }
+@media (max-width: 760px) {
+  .cv-terms, .cv-terms-two { grid-template-columns: minmax(0, 1fr); }
+  .cv-terms > div { border-bottom: 0; padding: 2px 0; }
+  .cv-terms .cv-term { padding-top: 12px; border-top: 1px solid var(--hairline); }
+}

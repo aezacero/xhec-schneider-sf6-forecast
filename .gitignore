@@ -1,0 +1,45 @@
+# Data and outputs (NDA: never commit data)
+data/
+outputs/
+*.csv
+*.xlsx
+*.xls
+*.zip
+*.parquet
+*.pdf
+
+# Slides and presentations (Schneider material is confidential)
+slides/
+*.pptx
+*.ppt
+*.key
+
+# Models
+*.pt
+*.pkl
+*.joblib
+*.ckpt
+
+# Environment and secrets
+.venv
+.venv.nosync/
+.env
+
+# Python and tooling caches
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Personal Claude Code files
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Personal notes and plans (not shared)
+docs/local/

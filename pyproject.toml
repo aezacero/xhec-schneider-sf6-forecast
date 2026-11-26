@@ -1,0 +1,43 @@
+[project]
+name = "schneider-forecast"
+version = "0.1.0"
+description = "Raw-material price forecasting and business strategy for Schneider Electric switchgear (X-HEC data challenge)."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "codecarbon>=3.3.2",
+    "ipykernel>=7.4.0",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.5",
+    "openpyxl>=3.1.5",
+    "pandas>=3.1.1",
+    "scikit-learn>=1.9.1",
+    "statsmodels>=0.15.0",
+    "streamlit>=1.67.0",
+]
+
+[project.optional-dependencies]
+pretrained = [
+    "chronos-forecasting>=2.3.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+# notebooks are exploration: not linted, so plots and outputs never block a push
+extend-exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.5",
+]
